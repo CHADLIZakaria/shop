@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import CategoryService from '../service/CategoryService'
 import {Link} from 'react-router-dom'
-import Title from './Title'
+import Title from '../components/Title'
 
-const ListCategories = () => {
+const Categories = () => {
     const [categories, setCategories] = useState([])
     useEffect(() => {
         CategoryService.findAllCategories().then(data => setCategories(data))
@@ -14,7 +14,7 @@ const ListCategories = () => {
     }
     
     return (
-        <>
+        <div>
             <Title title={"List of categories"}/>
             <table className='table table-hover table-striped'>
                 <thead>
@@ -37,8 +37,8 @@ const ListCategories = () => {
                     )}
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 
-export default ListCategories
+export default Categories

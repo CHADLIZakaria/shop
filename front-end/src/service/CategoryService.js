@@ -19,7 +19,7 @@ class CategoryService {
         }
     }
     deleteCategoryById(id) {
-        axios.delete(`http://localhost:8080/api/categories/${id}`);
+        return axios.delete(`http://localhost:8080/api/categories/${id}`);
     }
 }
 export default new CategoryService()

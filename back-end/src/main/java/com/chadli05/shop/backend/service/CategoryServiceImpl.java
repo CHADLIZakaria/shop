@@ -38,5 +38,10 @@ public class CategoryServiceImpl implements CategoryService {
     public Category udpate(Category category) {
         return categoryRepository.save(category);
     }
+
+    @Override
+    public Category findByName(String name) {
+        return categoryRepository.findByName(name);
+    }
     
 }

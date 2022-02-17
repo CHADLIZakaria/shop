@@ -2,6 +2,7 @@ package com.chadli05.shop.backend.service;
 
 import java.util.List;
 
+import com.chadli05.shop.backend.model.Category;
 import com.chadli05.shop.backend.model.Product;
 import com.chadli05.shop.backend.repository.ProductRepository;
 
@@ -22,6 +23,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product save(Product product) {
         return productRepository.save(product);
+    }
+
+    @Override
+    public List<Product> findByCategory(Category category) {
+        return productRepository.findByCategory(category);
     }
     
 }
