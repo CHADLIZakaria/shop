@@ -5,7 +5,7 @@ import java.util.List;
 import com.chadli05.shop.backend.model.Category;
 
 public interface CategoryService {
-    public List<Category> findAll();
+    public List<Category> findAll(int pageNumber, int pageSize, String sortingBy);
     public Category save(Category category);
     public Category findById(Long id);
     public void deleteById(Long id);
