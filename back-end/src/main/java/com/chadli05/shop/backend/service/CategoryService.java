@@ -1,11 +1,10 @@
 package com.chadli05.shop.backend.service;
 
-import java.util.List;
-
+import com.chadli05.shop.backend.api.ResponseListPage;
 import com.chadli05.shop.backend.model.Category;
 
 public interface CategoryService {
-    public List<Category> findAll(int pageNumber, int pageSize, String sortingBy);
+    public ResponseListPage findAll(int pageNumber, int pageSize, String sortingBy);
     public Category save(Category category);
     public Category findById(Long id);
     public void deleteById(Long id);

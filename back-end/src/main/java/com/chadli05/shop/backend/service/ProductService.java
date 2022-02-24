@@ -9,5 +9,4 @@ public interface ProductService {
     public List<Product> findAll();
     public List<Product> findByCategory(Category category);
     public Product save(Product product);
-    
 }

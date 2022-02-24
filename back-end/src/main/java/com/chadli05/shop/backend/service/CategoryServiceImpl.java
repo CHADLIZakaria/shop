@@ -1,8 +1,9 @@
 package com.chadli05.shop.backend.service;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import java.util.ArrayList;
+
+import com.chadli05.shop.backend.api.ResponseListPage;
 import com.chadli05.shop.backend.model.Category;
 import com.chadli05.shop.backend.repository.CategoryRepository;
 
@@ -12,18 +13,21 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<Category> findAll(int pageNumber, int pageSize, String sortingBy) {
+    public ResponseListPage findAll(int pageNumber, int pageSize, String sortingBy) {
         PageRequest paging = PageRequest.of(pageNumber, pageSize, Sort.by(sortingBy));
         Page<Category> categories = categoryRepository.findAll(paging);
-        if(categories.hasContent()) return categories.getContent();
-        return new ArrayList<Category>();
+        if(categories.hasContent()) return new ResponseListPage(categories.getTotalPages(), categories.getTotalElements(), pageNumber+1, categories.getContent());
+        return new ResponseListPage(categories.getTotalPages(), categories.getTotalElements(), pageNumber+1, new ArrayList<>());
     }
 
     @Override

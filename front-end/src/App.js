@@ -12,7 +12,6 @@ function App() {
   return (
     <Router>
       <Layout>
-          <Sidebar />
           <Routes>
             <Route path="/categories" element={<Categories />} />
             <Route path="/category/:id/edit" element={<FormCategory />} />

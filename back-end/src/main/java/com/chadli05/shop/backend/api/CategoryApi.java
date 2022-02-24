@@ -1,11 +1,10 @@
 package com.chadli05.shop.backend.api;
 
-import java.util.List;
-
 import com.chadli05.shop.backend.model.Category;
 import com.chadli05.shop.backend.service.CategoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,32 +22,56 @@ public class CategoryApi {
     private CategoryService categoryService;
 
     @RequestMapping(value = "/categories", method = RequestMethod.GET)
-    public ResponseEntity<List<Category>> findAllCategory(
-        @RequestParam(defaultValue = "0", name = "page", required = false) Integer pageNumber,
+    public ResponseEntity<Object> findAllCategory(
+        @RequestParam(defaultValue = "1", name = "page", required = false) Integer pageNumber,
         @RequestParam(defaultValue = "2", name = "size", required = false) Integer size,
-        @RequestParam(defaultValue = "id", name = "keyword", required = false) String keyword
+        @RequestParam(defaultValue = "id", name = "sortBy", required = false) String keyword
     ) {
-        return ResponseEntity.ok().body(categoryService.findAll(pageNumber, size, keyword));
+        try {
+            return ResponseHandler.generateResponse("Successfully retrieved data", HttpStatus.OK, categoryService.findAll(pageNumber-1, size, keyword));
+        }
+        catch(Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @RequestMapping(value="/categories/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Category> findCategoryById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(categoryService.findById(id));
+    public ResponseEntity<Object> findCategoryById(@PathVariable Long id) {
+        try {
+            return ResponseHandler.generateResponse("Successfully retrieved data", HttpStatus.OK, categoryService.findById(id));
+        }
+        catch(Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @RequestMapping(value="/categories/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteCategoryById(@PathVariable Long id) {
-        categoryService.deleteById(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Object> deleteCategoryById(@PathVariable Long id) {
+        try {
+            return ResponseHandler.generateResponse("Deleted!", HttpStatus.OK, null);
+        }
+        catch(Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @RequestMapping(value="/categories/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Category> updateCategory(@PathVariable Long id, @RequestBody Category category) {
-        return ResponseEntity.ok().body(categoryService.save(category));
+    public ResponseEntity<Object> updateCategory(@PathVariable Long id, @RequestBody Category category) {
+        try {
+            return ResponseHandler.generateResponse("Successfully retrieved data", HttpStatus.OK, categoryService.save(category));
+        }
+        catch(Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 
     @RequestMapping(value="/category", method=RequestMethod.POST)
-    public ResponseEntity<Category> saveCategory(@RequestBody Category category) {
-        return ResponseEntity.ok().body(categoryService.save(category));
+    public ResponseEntity<Object> saveCategory(@RequestBody Category category) {
+        try {
+            return ResponseHandler.generateResponse("Successfully retrieved data", HttpStatus.OK, categoryService.save(category));
+        }
+        catch(Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
     }
 }
