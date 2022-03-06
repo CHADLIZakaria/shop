@@ -32,6 +32,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category save(Category category) {
+        //String fileName = org.springframework.util.StringUtils.cleanPath(path)
         return categoryRepository.save(category);
     }
 

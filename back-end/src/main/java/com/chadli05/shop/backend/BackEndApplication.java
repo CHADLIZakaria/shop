@@ -26,17 +26,17 @@ public class BackEndApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Category category1 = categoryService.save(new Category(null, "Froid"));
-		Category category2 = categoryService.save(new Category(null, "Sport"));
-		Category category3 = categoryService.save(new Category(null, "Enfant"));
-		Category category4 = categoryService.save(new Category(null, "Adulte"));
+		// Category category1 = categoryService.save(new Category(null, "Froid"));
+		// Category category2 = categoryService.save(new Category(null, "Sport"));
+		// Category category3 = categoryService.save(new Category(null, "Enfant"));
+		// Category category4 = categoryService.save(new Category(null, "Adulte"));
 			
-		Product product1=productService.save(new Product(null, "shirt 1", category1));
-		Product product2=productService.save(new Product(null, "shirt 2", category1));
-		Product product3=productService.save(new Product(null, "shirt 3", category1));
-		Product product4=productService.save(new Product(null, "shirt 4", category1));
-		Product product5=productService.save(new Product(null, "short 1", category2));
-		Product product6=productService.save(new Product(null, "short 2", category2));
+		// Product product1=productService.save(new Product(null, "shirt 1", category1));
+		// Product product2=productService.save(new Product(null, "shirt 2", category1));
+		// Product product3=productService.save(new Product(null, "shirt 3", category1));
+		// Product product4=productService.save(new Product(null, "shirt 4", category1));
+		// Product product5=productService.save(new Product(null, "short 1", category2));
+		// Product product6=productService.save(new Product(null, "short 2", category2));
 	}
 
 }

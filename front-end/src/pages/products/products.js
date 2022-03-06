@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import CategoryService from '../service/CategoryService'
+import CategoryService from '../../service/CategoryService'
 import {Link} from 'react-router-dom'
-import Title from '../components/Title'
+import Title from '../../components/Title/Title'
 
-const Categories = () => {
+const Products = () => {
     const [categories, setCategories] = useState([])
     useEffect(() => {
-        CategoryService.findAllCategories().then(data => setCategories(data))
+        //CategoryService.findAllCategories().then(data => setCategories(data))
     }, [])
 
     const deleteCategeory = (id) => {
@@ -41,4 +41,4 @@ const Categories = () => {
     )
 }
 
-export default Categories
+export default Products

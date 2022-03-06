@@ -24,7 +24,7 @@ public class CategoryApi {
     @RequestMapping(value = "/categories", method = RequestMethod.GET)
     public ResponseEntity<Object> findAllCategory(
         @RequestParam(defaultValue = "1", name = "page", required = false) Integer pageNumber,
-        @RequestParam(defaultValue = "2", name = "size", required = false) Integer size,
+        @RequestParam(defaultValue = "10", name = "size", required = false) Integer size,
         @RequestParam(defaultValue = "id", name = "sortBy", required = false) String keyword
     ) {
         try {

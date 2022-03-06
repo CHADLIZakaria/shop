@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CategoryService from '../service/CategoryService'
+import CategoryService from '../../service/CategoryService'
 import {Link} from 'react-router-dom'
 
 const Navbar = () => {
@@ -7,7 +7,7 @@ const Navbar = () => {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        CategoryService.findAllCategories().then(data => setCategories(data))    
+        CategoryService.findAllCategories().then(values => setCategories(values.data.results))
     },[])
     
     return (
@@ -15,7 +15,7 @@ const Navbar = () => {
         {
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">Shop</Link>
+                    <Link className="navbar-brand" to="/">Sou9</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -27,6 +27,9 @@ const Navbar = () => {
                                     <Link className="nav-link" aria-current="page" to={`/categories/${category.name}`}>{category.name}</Link>
                                 </li>
                             )}
+                            <li className="nav-item">
+                                <a className="nav-link">Logout </a>    
+                            </li>
                         </ul>
 
                     </div>

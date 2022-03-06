@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import ProductService from '../service/ProductService'
-import Title from './Title'
+import Title from './Title/Title'
 import {useParams} from "react-router-dom"
 
 const ListProducts = () => {
