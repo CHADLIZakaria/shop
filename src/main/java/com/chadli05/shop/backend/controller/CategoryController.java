@@ -40,6 +40,16 @@ public class CategoryController {
         }
     }
 
+    @RequestMapping(value = "/categories/search", method = RequestMethod.GET)
+    public ResponseEntity<Object> findByName(@RequestParam("name") String name) {
+        try {
+            return ResponseHandler.generateResponse("Successfully retrieved data", HttpStatus.OK, categoryService.findByNameContainingIgnoreCase(name));
+        }
+        catch(Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
+    }
+
     @RequestMapping(value="/categories/{id}", method = RequestMethod.GET)
     public ResponseEntity<Object> findCategoryById(@PathVariable Long id) {
         try {

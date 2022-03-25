@@ -13,6 +13,6 @@ public interface CategoryService {
     public Category findById(Long id);
     public void deleteById(Long id);
     public Category udpate(Category category);
-    public Category findByName(String name);
+    public List<Category> findByNameContainingIgnoreCase(String name);
     
 }

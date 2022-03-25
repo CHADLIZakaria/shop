@@ -50,8 +50,8 @@ public class ProductController {
         Product product) {
         return ResponseEntity.ok().body(productService.save(file, product));
     }
-    @RequestMapping(value="/category/{name}/products", method = RequestMethod.GET)
-    public ResponseEntity<List<Product>> findProductsByCategories(@PathVariable String name) {
-        return ResponseEntity.ok().body(productService.findByCategory(categoryService.findByName(name)));
-    }
+    // @RequestMapping(value="/category/{name}/products", method = RequestMethod.GET)
+    // public ResponseEntity<List<Product>> findProductsByCategories(@PathVariable String name) {
+    //     return ResponseEntity.ok().body(productService.findByCategory(categoryService.findByName(name)));
+    // }
 }
