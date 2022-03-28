@@ -24,6 +24,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class CustomAuthentificationFilter extends UsernamePasswordAuthenticationFilter {
  
     private AuthenticationManager authenticationManager;
@@ -35,8 +38,11 @@ public class CustomAuthentificationFilter extends UsernamePasswordAuthentication
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        // String username = request.getParameter("username");
+        // String password = request.getParameter("password");
+        String username = "zakaria";
+        String password="zakaria";
+
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username, password);
         return authenticationManager.authenticate(usernamePasswordAuthenticationToken);
     }
@@ -61,6 +67,7 @@ public class CustomAuthentificationFilter extends UsernamePasswordAuthentication
             Map<String, String> tokens = new HashMap<>();
             tokens.put("access_token", access_token);
             tokens.put("refresh_token", refresh_token);
+            log.info(access_token);
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
             new ObjectMapper().writeValue(response.getOutputStream(), tokens);
         }

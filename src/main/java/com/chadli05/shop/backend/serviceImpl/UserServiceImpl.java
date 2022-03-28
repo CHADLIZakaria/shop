@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-       return userRepository.save(user);
+        return userRepository.save(user);
     }
 
     
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public void deleteById(Long id) {
-       userRepository.deleteById(id); 
+        userRepository.deleteById(id); 
     }
 
     @Override
@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             throw new RuntimeException("Username not found");
         }
         else {
-            log.info("username {} found", username);
+            log.info("username {} found", user.getUsername());
         }
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         user.getRoles().forEach(role -> {

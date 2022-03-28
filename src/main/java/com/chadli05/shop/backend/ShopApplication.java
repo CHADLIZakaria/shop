@@ -15,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class ShopApplication implements CommandLineRunner {
@@ -79,5 +77,7 @@ public class ShopApplication implements CommandLineRunner {
 		userService.save(new User(null, "zakaria", "chadli", "zakaria", "zakaria", new ArrayList<>()));
 		//userService.addRoleToUser("zakaria", "ROLE_SUPER_ADMIN");
 	}
+
+	
 
 }
