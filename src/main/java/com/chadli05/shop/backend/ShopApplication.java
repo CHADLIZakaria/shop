@@ -1,15 +1,22 @@
 package com.chadli05.shop.backend;
 
-import com.chadli05.shop.backend.model.Comment;
+import java.util.ArrayList;
+
+import com.chadli05.shop.backend.model.Role;
+import com.chadli05.shop.backend.model.User;
 import com.chadli05.shop.backend.service.CategoryService;
 import com.chadli05.shop.backend.service.CommentService;
 import com.chadli05.shop.backend.service.FileStorageService;
 import com.chadli05.shop.backend.service.ProductService;
+import com.chadli05.shop.backend.service.RoleService;
+import com.chadli05.shop.backend.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class ShopApplication implements CommandLineRunner {
@@ -22,6 +29,12 @@ public class ShopApplication implements CommandLineRunner {
 
 	@Autowired
 	private CommentService commentService;
+
+	@Autowired
+	private RoleService roleService;
+
+	@Autowired
+	private UserService userService;
 
 	
 	@Autowired
@@ -58,6 +71,13 @@ public class ShopApplication implements CommandLineRunner {
 
 		//fileStorageService.deleteAll();
 		fileStorageService.init();
+
+
+		roleService.save(new Role(null, "ROLE_SUPER_ADMIN"));
+		roleService.save(new Role(null, "ROLE_ADMIN"));
+		roleService.save(new Role(null, "ROLE_USER"));
+		userService.save(new User(null, "zakaria", "chadli", "zakaria", "zakaria", new ArrayList<>()));
+		//userService.addRoleToUser("zakaria", "ROLE_SUPER_ADMIN");
 	}
 
 }

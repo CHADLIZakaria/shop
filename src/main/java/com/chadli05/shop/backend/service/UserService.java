@@ -6,5 +6,8 @@ import com.chadli05.shop.backend.model.User;
 
 public interface UserService {
     public List<User> findAll();
-    public void save(User user);
+    public User save(User user);
+    public User findByUsername(String username);
+    public void addRoleToUser(String username, String roleName);
+    public void deleteById(Long id);
 }
